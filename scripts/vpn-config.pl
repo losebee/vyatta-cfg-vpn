@@ -1106,6 +1106,7 @@ if ($vcVPN->exists('ipsec')) {
                 }else{
                     $genout .= "\tauto=start\n";
                 }
+	    	$genout .= "\closeaction=restart\n";
             }
             $conn_head =~ s/\n//;
             $genout .= "#$conn_head";    # to identify end of connection definition
