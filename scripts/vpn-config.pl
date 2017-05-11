@@ -1091,13 +1091,14 @@ if ($vcVPN->exists('ipsec')) {
                 $genout .= "\tkeyingtries=%forever\n";
             } else {
                 my $conntype = $vcVPN->returnValue("ipsec site-to-site peer $peer connection-type");
-		$genout .= "\tcloseaction=restart\n";
                 if (defined($conntype)){
                     if ($conntype eq "initiate"){
                         $genout .= "\tauto=start\n";
+			$genout .= "\tcloseaction=restart\n";
                         $genout .= "\tkeyingtries=%forever\n";
                     } elsif ($conntype eq "respond"){
                         $genout .= "\tauto=route\n";
+			$genout .= "\tcloseaction=clear\n";
                         ##  We want to act as a responder. Ideally we do not want to ever
                         ##  be a initiator, but we can't avoid it if SPD entries are installed
                         ##  to protect selected traffic from going out unencrypted. The best we
