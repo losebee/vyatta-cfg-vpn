@@ -311,7 +311,7 @@ if ($vcVPN->exists('ipsec')) {
     if ($vcVPN->exists('ipsec disable-uniqreqids')) {
         $genout .= "\tdisableuniqreqids=yes\n";
     }
-
+    $genout .= "\tuniqueids=yes\n";
     #
     # Default keyengine is ikev1
     #
